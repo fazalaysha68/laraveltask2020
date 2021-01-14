@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" onsubmit="if(document.getElementById('agree').checked) { return true; } else { alert('User must be at least 18 years old to register into the system'); return false; }">
                         @csrf
 
                         <div class="form-group row">
@@ -60,7 +60,12 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
-
+                        <div class="form-group row">
+                            <label class="containercheck">I am 18 years old or over
+                                <input type="checkbox" id="agree">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
